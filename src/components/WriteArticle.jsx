@@ -34,12 +34,18 @@ function WriteArticle() {
     //add authorId to articleObj
     articleObj.author = currentUser._id;
     try {
-      await axios.post(
-        "https://blog-app-backend-unn9.onrender.com/author-api/articles",
-        articleObj,
-        { withCredentials: true }
-      );
+      const token = localStorage.getItem("token");
 
+await axios.post(
+  "https://blog-app-backend-unn9.onrender.com/author-api/articles",
+  articleObj,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    withCredentials: true,
+  }
+);
       toast.success("Article published successfully!");
 
       reset();
