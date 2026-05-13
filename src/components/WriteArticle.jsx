@@ -39,12 +39,7 @@ function WriteArticle() {
 await axios.post(
   "https://blog-app-backend-unn9.onrender.com/author-api/articles",
   articleObj,
-  {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-    withCredentials: true,
-  }
+  { withCredentials: true }
 );
       toast.success("Article published successfully!");
 
