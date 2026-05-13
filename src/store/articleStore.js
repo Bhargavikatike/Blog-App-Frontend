@@ -1,69 +1,69 @@
 import { create } from "zustand"
 import axios from "axios"
 
-export const useArticle = create((set)=>({
+export const useArticle = create((set) => ({
 
-  loading:false,
-  error:null,
-  articles:[],
+  loading: false,
+  error: null,
+  articles: [],
 
   // GET ALL ARTICLES
   getAllArticles: async () => {
 
-    try{
+    try {
 
       // start loading
-      set({loading:true,error:null})
+      set({ loading: true, error: null })
 
       const res = await axios.get(
-        "http://localhost:4000/user-api/articles",
-        {withCredentials:true}
+        "https://blog-app-backend-unn9.onrender.com/user-api/articles",
+        { withCredentials: true }
       )
 
       // update state
       set({
-        loading:false,
+        loading: false,
         articles: res.data.payload,
-        error:null
+        error: null
       })
 
     }
-    catch(err){
+    catch (err) {
 
       set({
-        loading:false,
+        loading: false,
         error: err.response?.data?.error || "Fetching articles failed"
       })
 
     }
 
   },
-  getAuthorArticles: async(authorId)=>{
+  getAuthorArticles: async (authorId) => {
 
-  try{
+    try {
 
-    set({loading:true,error:null})
+      set({ loading: true, error: null })
 
-    let res = await axios.get(
-      `http://localhost:4000/author-api/articles/${authorId}`,
-      {withCredentials:true}
-    )
+      let res = await axios.get(
+        `https://blog-app-backend-unn9.onrender.com/author-api/articles/${authorId}`,
+        { withCredentials: true }
+      )
 
-    set({
-      loading:false,
-      articles:res.data.payload
-    })
+      set({
+        loading: false,
+        articles: res.data.payload
+      })
+
+    }
+    catch (err) {
+
+      set({
+        loading: false,
+        error: err.response?.data?.error || "Fetching failed"
+      })
+
+    }
 
   }
-  catch(err){
-
-    set({
-      loading:false,
-      error:err.response?.data?.error || "Fetching failed"
-    })
-
-  }
-
-}
 
 }))

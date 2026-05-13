@@ -19,7 +19,7 @@ import { useAuth } from "../store/authStore";
 function WriteArticle() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const currentUser=useAuth(state=>state.currentUser)
+  const currentUser = useAuth(state => state.currentUser)
 
   const {
     register,
@@ -32,10 +32,10 @@ function WriteArticle() {
     setLoading(true);
 
     //add authorId to articleObj
-    articleObj.author=currentUser._id;
+    articleObj.author = currentUser._id;
     try {
       await axios.post(
-        "http://localhost:4000/author-api/articles",
+        "https://blog-app-backend-unn9.onrender.com/author-api/articles",
         articleObj,
         { withCredentials: true }
       );
