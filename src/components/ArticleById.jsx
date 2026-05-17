@@ -97,15 +97,41 @@ function ArticleByID() {
     navigate("/edit-article", { state: articleObj });
   };
 
-  //post comment by user
+   // post comment by user
   const addComment = async (commentObj) => {
-    //add artcileId
+
+    // add articleId
     commentObj.articleId = article._id;
+
     console.log(commentObj);
-    let res = await axios.put("https://blog-app-backend-unn9.onrender.com/user-api/articles", commentObj, { withCredentials: true });
-    if (res.status === 200) {
-      toast.success(res.data.message);
-      setArticle(res.data.payload);
+
+    try {
+
+      const res = await axios.put(
+        "https://blog-app-backend-unn9.onrender.com/user-api/articles",
+        commentObj,
+        {
+          headers: {
+            Authorization: `Bearer ${sessionStorage.getItem("token") || localStorage.getItem("token")}`
+          },
+          withCredentials: true
+        }
+      );
+
+      if (res.status === 200) {
+
+        toast.success(res.data.message);
+
+        setArticle(res.data.payload);
+      }
+
+    } catch (err) {
+
+      console.log(err);
+
+      toast.error(
+        err.response?.data?.message || "Failed to add comment"
+      );
     }
   };
 
