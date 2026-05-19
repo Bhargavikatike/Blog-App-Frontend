@@ -1,114 +1,169 @@
+🎨 Frontend Architecture & UI Documentation
 <div align="center">
-
-# ✍️ Full-Stack Role-Based Blog Application (MERN)
-
-A modern, responsive, and secure blogging platform built with the **MERN Stack**. Designed with an enterprise-grade **Role-Based Access Control (RBAC)** architecture to deliver distinct experiences for Readers, Creators, and Administrators.
+🖥️ Blog Application Frontend Documentation
+This document provides the complete technical overview of the Blog Application frontend.
+It explains the frontend architecture, routing system, state management, UI flow, authentication handling, and component structure.
 
 </div>
+🏗️ 1. Frontend Architecture & Application Flow
+The frontend is developed using React.js with a modular component-based architecture for scalability and maintainability.
 
----
+Core Frontend Flow
+User interacts with React UI components
 
-## 🌟 1. Project Vision & Core Features
+Components communicate with backend APIs using Axios/Fetch
 
-This platform is engineered to handle complex data relationships, multi-tenant roles, and industry-standard security practices.
+Authentication state is maintained using Context API / Redux
 
-### 🔐 Security & Persistence
-- **Stateless Authentication:** Implements JWT-based auth where tokens are stored in `HTTP-Only` cookies, mitigating XSS and session hijacking.
-- **Data Integrity:** Strict Mongoose schemas with pre-save hooks for password hashing (`bcryptjs`).
-- **Media Hosting:** Integrated Cloudinary pipeline for dynamic user profile image management.
+React Router manages client-side navigation
 
-### 📝 Content & Engagement
-- **Soft Deletion Architecture:** Articles are never hard-deleted; instead, they are deactivated (`isArticleActive: false`) for auditing and recovery.
-- **Interactive Commenting:** Real-time engagement via subdocument-based comments on articles.
-- **Categorization:** Smart filtering for Technology, AI, Programming, and Web Development.
+Protected routes restrict unauthorized access
 
----
+Global state updates dynamically without page reloads
 
-## 👥 2. Roles & Permissions (RBAC)
-
-The application features a granular Three-Tier role system that dictates the UI layout and API access.
-
-| Role | Permissions & Capability Scope |
-| :--- | :--- |
-| **USER (Reader)** | Can register, login, browse all active articles, manage their own profile, and post comments on articles. |
-| **AUTHOR (Creator)** | Inherits USER capabilities + access to a Private Dashboard. Can write, edit, and toggle the status of their own articles. |
-| **ADMIN (Manager)** | Full system oversight. Can manage all users (Block/Unblock), moderate any article on the platform, and view system-wide stats. |
-
----
-
-## 📐 3. System Architecture & Data Model
-
-### High-Level Request Flow
-```mermaid
-graph TD
-    Client[Client Browser / React App] -->|HTTPS| Vite[Frontend / Vercel]
-    Vite -->|REST API| Express[Backend / Render]
-    
-    subgraph Core Engine
-        Express -->|JWT Check| Auth[Middleware]
-        Auth -->|Business Logic| Controllers[Logic Layer]
-        Controllers -->|Persistence| DB[(MongoDB Atlas)]
-    end
-    
-    subgraph Media Storage
-        Controllers -->|Binary Stream| Cloudinary[Image CDN]
-    end
-```
-
-
----
-
-## 🚀 4. How to Use (Installation & Setup)
-
-Follow these steps to instantiate the repository on any computer.
-
-### 📋 Prerequisites
-- **Node.js** (v18+)
-- **MongoDB Atlas** Account
-- **Cloudinary** Account
-
-### 1. Initial Setup
-```bash
-git clone https://github.com/Akhila-1703/blog-app.git
-cd blog-app
-```
-
-### 2. Configure Backend
-```bash
-cd backend
+🚀 2. Local Installation & Setup
+1️⃣ Install Dependencies
+cd frontend
 npm install
-```
-Create a `.env` file in the `backend` folder:
-```env
-PORT=4000
-DB_URL=your_mongodb_uri
-JWT_SECRET_KEY=your_secret
-CLOUD_NAME=your_name
-API_KEY=your_key
-API_SECRET=your_secret
-```
+2️⃣ Environment Configuration
+Create a .env file:
 
-### 3. Configure Frontend
-```bash
-cd ../frontend
-npm install
-```
+VITE_API_URL=http://localhost:4000
+3️⃣ Start Development Server
+npm run dev
+📂 3. Frontend Project Structure
+frontend/
+├── public/                 # Static assets
+├── src/
+│   ├── Components/         # Reusable UI components
+│   ├── Pages/              # Application pages
+│   ├── Context/            # Global state management
+│   ├── Services/           # API service functions
+│   ├── Routes/             # Protected & public routing
+│   ├── Assets/             # Images & icons
+│   ├── App.jsx             # Main application component
+│   └── main.jsx            # Application entry point
+├── .env                    # Environment variables
+├── package.json
+└── README.md
+📦 4. Technology Stack & Package Evaluation
+Package	Purpose
+react	Component-based frontend library
+react-router-dom	Client-side routing
+axios	API communication
+bootstrap / tailwindcss	UI styling
+react-icons	Icon library
+context-api / redux	State management
+vite	Fast frontend build tool
+🎨 5. UI Modules & Features
+🔐 Authentication Module
+Handles:
 
-### 4. Running the Project
-Launch two separate terminals:
-- **Terminal 1:** `cd backend && npm start`
-- **Terminal 2:** `cd frontend && npm run dev`
+User Login
 
----
+User Registration
 
-## 📚 5. Technical Documentation Links
+Logout Functionality
 
-For a granular look at the **Project Structure**, **File Lists**, and **Package Details**, please refer to the folder-specific manuals:
+Protected Route Access
 
-- 📂 **[Backend Internal Docs](./backend/README.md)**: Details the API logic, file tree, and server packages.
-- 📂 **[Frontend Internal Docs](./frontend/README.md)**: Details the UI tree, State logic, and client packages.
+📝 Blog Management Module
+Features include:
 
----
-<div align="center">
-  <i>Engineered with 20+ YOE standards for security, scalability, and UX.</i>
-</div>
+Create Blog Articles
+
+Edit Articles
+
+Delete Articles
+
+View Article Details
+
+💬 Comment System
+Users can:
+
+Add comments
+
+View comments
+
+Interact with blog posts
+
+👤 User Dashboard
+Displays:
+
+User profile
+
+User articles
+
+Activity management
+
+🌐 6. Frontend Routing Structure
+Route	Component	Purpose
+/	Home	Displays all blog articles
+/login	Login	User authentication
+/register	Register	New user registration
+/create-article	CreateArticle	Create blog posts
+/article/:id	ArticleDetails	View full article
+/dashboard	Dashboard	User dashboard
+🔄 7. Frontend & Backend Communication
+The frontend communicates with the backend through REST APIs.
+
+Features:
+Axios-based API requests
+
+JWT token authentication
+
+Cookie/session handling
+
+Dynamic data rendering
+
+Error handling & validations
+
+🔐 8. Security Implementation
+Implemented frontend security features:
+
+Protected Routes
+
+Token Validation
+
+Form Validation
+
+Secure API Calls
+
+Session Handling
+
+⚡ 9. Performance Optimizations
+Component reusability
+
+Lazy loading
+
+Efficient state updates
+
+Optimized rendering
+
+Modular folder structure
+
+✅ 10. Features Summary
+Responsive UI Design
+
+Authentication System
+
+Blog CRUD Operations
+
+Dynamic Routing
+
+API Integration
+
+Modern React Architecture
+
+📌 11. Future Enhancements
+Rich Text Editor
+
+Dark Mode
+
+Real-time Notifications
+
+Search & Filters
+
+Image Upload Support
+
+Like & Share Features
