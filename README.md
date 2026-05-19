@@ -1,37 +1,59 @@
-🎨 Frontend Architecture & UI Documentation
 <div align="center">
-🖥️ Blog Application Frontend Documentation
-This document provides the complete technical overview of the Blog Application frontend.
+
+# 🎨 Frontend Architecture & UI Documentation
+
+This document provides the complete technical overview of the Blog Application frontend.  
 It explains the frontend architecture, routing system, state management, UI flow, authentication handling, and component structure.
 
 </div>
-🏗️ 1. Frontend Architecture & Application Flow
-The frontend is developed using React.js with a modular component-based architecture for scalability and maintainability.
 
-Core Frontend Flow
-User interacts with React UI components
+---
 
-Components communicate with backend APIs using Axios/Fetch
+# 🏗️ 1. Frontend Architecture & Application Flow
 
-Authentication state is maintained using Context API / Redux
+The frontend is developed using **React.js** with a modular component-based architecture for scalability and maintainability.
 
-React Router manages client-side navigation
+### Core Frontend Flow
 
-Protected routes restrict unauthorized access
+- User interacts with React UI components
+- Components communicate with backend APIs using Axios/Fetch
+- Authentication state is maintained using Context API / Redux
+- React Router manages client-side navigation
+- Protected routes restrict unauthorized access
+- Global state updates dynamically without page reloads
 
-Global state updates dynamically without page reloads
+---
 
-🚀 2. Local Installation & Setup
-1️⃣ Install Dependencies
+# 🚀 2. Local Installation & Setup
+
+To run the frontend application independently:
+
+## 1. Install Dependencies
+
+```bash
 cd frontend
 npm install
-2️⃣ Environment Configuration
-Create a .env file:
+```
 
+## 2. Environment Configuration
+
+Create a `.env` file:
+
+```env
 VITE_API_URL=http://localhost:4000
-3️⃣ Start Development Server
+```
+
+## 3. Start Development Server
+
+```bash
 npm run dev
-📂 3. Frontend Project Structure
+```
+
+---
+
+# 📂 3. Frontend Project Structure
+
+```text
 frontend/
 ├── public/                 # Static assets
 ├── src/
@@ -46,124 +68,144 @@ frontend/
 ├── .env                    # Environment variables
 ├── package.json
 └── README.md
-📦 4. Technology Stack & Package Evaluation
-Package	Purpose
-react	Component-based frontend library
-react-router-dom	Client-side routing
-axios	API communication
-bootstrap / tailwindcss	UI styling
-react-icons	Icon library
-context-api / redux	State management
-vite	Fast frontend build tool
-🎨 5. UI Modules & Features
-🔐 Authentication Module
+```
+
+---
+
+# 📦 4. Technology Stack & Package Evaluation
+
+| Package | Purpose |
+| :--- | :--- |
+| `react` | Component-based frontend library |
+| `react-router-dom` | Client-side routing |
+| `axios` | API communication |
+| `bootstrap` | UI styling |
+| `react-icons` | Icon library |
+| `context-api / redux` | State management |
+| `vite` | Fast frontend build tool |
+
+---
+
+# 🎨 5. UI Modules & Features
+
+## 🔐 Authentication Module
+
 Handles:
 
-User Login
+- User Login
+- User Registration
+- Logout Functionality
+- Protected Route Access
 
-User Registration
+---
 
-Logout Functionality
+## 📝 Blog Management Module
 
-Protected Route Access
-
-📝 Blog Management Module
 Features include:
 
-Create Blog Articles
+- Create Blog Articles
+- Edit Articles
+- Delete Articles
+- View Article Details
 
-Edit Articles
+---
 
-Delete Articles
+## 💬 Comment System
 
-View Article Details
-
-💬 Comment System
 Users can:
 
-Add comments
+- Add comments
+- View comments
+- Interact with blog posts
 
-View comments
+---
 
-Interact with blog posts
+## 👤 User Dashboard
 
-👤 User Dashboard
 Displays:
 
-User profile
+- User profile
+- User articles
+- Activity management
 
-User articles
+---
 
-Activity management
+# 🌐 6. Frontend Routing Structure
 
-🌐 6. Frontend Routing Structure
-Route	Component	Purpose
-/	Home	Displays all blog articles
-/login	Login	User authentication
-/register	Register	New user registration
-/create-article	CreateArticle	Create blog posts
-/article/:id	ArticleDetails	View full article
-/dashboard	Dashboard	User dashboard
-🔄 7. Frontend & Backend Communication
+| Route | Component | Purpose |
+| :--- | :--- | :--- |
+| `/` | Home | Displays all blog articles |
+| `/login` | Login | User authentication |
+| `/register` | Register | New user registration |
+| `/create-article` | CreateArticle | Create blog posts |
+| `/article/:id` | ArticleDetails | View full article |
+| `/dashboard` | Dashboard | User dashboard |
+
+---
+
+# 🔄 7. Frontend & Backend Communication
+
 The frontend communicates with the backend through REST APIs.
 
-Features:
-Axios-based API requests
+### Features:
 
-JWT token authentication
+- Axios-based API requests
+- JWT token authentication
+- Cookie/session handling
+- Dynamic data rendering
+- Error handling & validations
 
-Cookie/session handling
+---
 
-Dynamic data rendering
+# 🔐 8. Security Implementation
 
-Error handling & validations
-
-🔐 8. Security Implementation
 Implemented frontend security features:
 
-Protected Routes
+- Protected Routes
+- Token Validation
+- Form Validation
+- Secure API Calls
+- Session Handling
 
-Token Validation
+---
 
-Form Validation
+# ⚡ 9. Performance Optimizations
 
-Secure API Calls
+- Component reusability
+- Lazy loading
+- Efficient state updates
+- Optimized rendering
+- Modular folder structure
 
-Session Handling
+---
 
-⚡ 9. Performance Optimizations
-Component reusability
+# ✅ 10. Features Summary
 
-Lazy loading
+- Responsive UI Design
+- Authentication System
+- Blog CRUD Operations
+- Dynamic Routing
+- API Integration
+- Modern React Architecture
 
-Efficient state updates
+---
 
-Optimized rendering
+# 📌 11. Future Enhancements
 
-Modular folder structure
+- Rich Text Editor
+- Dark Mode
+- Real-time Notifications
+- Search & Filters
+- Image Upload Support
+- Like & Share Features
 
-✅ 10. Features Summary
-Responsive UI Design
+---
 
-Authentication System
+<div align="center">
 
-Blog CRUD Operations
+### 👩‍💻 Developed By
 
-Dynamic Routing
+**Bhargavi Katike**  
+B.Tech CSE – Anurag University
 
-API Integration
-
-Modern React Architecture
-
-📌 11. Future Enhancements
-Rich Text Editor
-
-Dark Mode
-
-Real-time Notifications
-
-Search & Filters
-
-Image Upload Support
-
-Like & Share Features
+</div>
